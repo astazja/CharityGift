@@ -17,4 +17,9 @@ public class ImplDonationService implements DonationService {
     public Integer getQuantityOfBags() {
         return donationRepository.getAllBags();
     }
+
+    @Override
+    public Long countDonations() {
+        return donationRepository.count();
+    }
 }
