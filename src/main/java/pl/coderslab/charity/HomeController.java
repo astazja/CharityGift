@@ -13,4 +13,9 @@ public class HomeController {
     public String homeAction(Model model){
         return "index";
     }
+
+    @RequestMapping("/form")
+    public String formAction(Model model){
+        return "form";
+    }
 }
