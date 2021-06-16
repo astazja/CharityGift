@@ -12,4 +12,9 @@ public class ImplDonationService implements DonationService {
     public ImplDonationService(DonationRepository donationRepository) {
         this.donationRepository = donationRepository;
     }
+
+    @Override
+    public Integer getQuantityOfBags() {
+        return donationRepository.getAllBags();
+    }
 }
