@@ -1,4 +1,4 @@
-package pl.coderslab.charity;
+package pl.coderslab.charity.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -21,10 +21,5 @@ public class HomeController {
         model.addAttribute("bags", donationService.getQuantityOfBags());
         model.addAttribute("donations", donationService.countDonations());
         return "index";
-    }
-
-    @RequestMapping("/form")
-    public String formAction(Model model){
-        return "form";
     }
 }
