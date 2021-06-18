@@ -5,6 +5,9 @@ import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.service.DonationService;
 
+import javax.transaction.Transactional;
+
+@Transactional
 @Service
 public class ImplDonationService implements DonationService {
 
