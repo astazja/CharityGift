@@ -46,6 +46,7 @@
     <div class="form--steps-instructions">
         <div class="form--steps-container">
             <h3>Ważne!</h3>
+            <h3>${(empty errorMessage) ? "" : errorMessage}</h3>
             <p data-step="1" class="active">
                 Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
                 wiedzieć komu najlepiej je przekazać.
@@ -66,6 +67,7 @@
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
         <form:form method="post" modelAttribute="donation">
+            <form:hidden path="id"/>
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
@@ -78,6 +80,7 @@
                         </label>
                     </div>
                 </c:forEach>
+                <p class="errorMessage"></p>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn next-step">Dalej</button>
                 </div>
@@ -93,7 +96,7 @@
                         <form:input path="quantity" type="number" step="1" min="1" />
                     </label>
                 </div>
-
+                <p class="errorMessage"></p>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
                     <button type="button" class="btn next-step">Dalej</button>
@@ -115,6 +118,7 @@
                     </label>
                     </div>
                 </c:forEach>
+                <p class="errorMessage"></p>
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
                     <button type="button" class="btn next-step">Dalej</button>
@@ -132,19 +136,19 @@
                                 Ulica <form:input path="street"/>
                             </label>
                         </div>
-
+                        <p class="errorMessage"></p>
                         <div class="form-group form-group--inline">
                             <label>
                                 Miasto <form:input path="city"/>
                             </label>
                         </div>
-
+                        <p class="errorMessage"></p>
                         <div class="form-group form-group--inline">
                             <label>
                                 Kod pocztowy <form:input path="zipCode"/>
                             </label>
                         </div>
-
+                        <p class="errorMessage"></p>
                     </div>
 
                     <div class="form-section--column">
@@ -154,13 +158,13 @@
                                 Data <form:input path="pickUpDate" type="date"/>
                             </label>
                         </div>
-
+                        <p class="errorMessage"></p>
                         <div class="form-group form-group--inline">
                             <label>
                                 Godzina <form:input path="pickUpTime" type="time"/>
                             </label>
                         </div>
-
+                        <p class="errorMessage"></p>
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
@@ -185,16 +189,12 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text"
-                                >4 worki ubrań w dobrym stanie dla dzieci</span
-                                >
+                                <span class="summary--text"></span>
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
-                                <span class="summary--text"
-                                >Dla fundacji "Mam marzenie" w Warszawie</span
-                                >
+                                <span class="summary--text"></span>
                             </li>
                         </ul>
                     </div>
@@ -203,19 +203,19 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
                             <ul>
-                                <li>Prosta 51</li>
-                                <li>Warszawa</li>
-                                <li>99-098</li>
-                                <li>123 456 789</li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
                             </ul>
                         </div>
 
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
-                                <li>13/12/2018</li>
-                                <li>15:40</li>
-                                <li>Brak uwag</li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
                             </ul>
                         </div>
                     </div>
