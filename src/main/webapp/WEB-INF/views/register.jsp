@@ -38,7 +38,7 @@
     </div>
     <div class="form-group">
       <input type="password" name="repeat" placeholder="Powtórz hasło"/>
-      <p><c:out value="${repeatMessage}"/></p>
+
     </div>
 
     <div class="form-group form-group--buttons">

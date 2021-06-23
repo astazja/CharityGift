@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,11 +45,13 @@ public class HomeController {
     public String save(@RequestParam String repeat, @Valid User user, BindingResult result, Model model) {
         if(result.hasErrors()) {
             return "register";
-        }else if(userService.findByUserEmail(user.getEmail()) != null) {
+        }
+        if(userService.findByUserEmail(user.getEmail()) != null) {
             model.addAttribute("emailMessage", "Taki email już istnieje");
             return "register";
-        }else if(!user.getPassword().equals(repeat)){
-            model.addAttribute("repeatMessage", "Podane hasła, nie sa takie same");
+        }
+        if(!user.getPassword().equals(repeat)){
+            result.addError(new FieldError("user","password","Podane hasła, nie sa takie same"));
             return "register";
         }
         userService.saveUser(user);
