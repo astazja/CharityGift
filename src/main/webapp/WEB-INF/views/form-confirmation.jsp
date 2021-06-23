@@ -11,7 +11,7 @@
 </head>
 <body>
 <header class="header--form-page">
-  <c:import url="app-header.jsp"/>
+  <c:import url="header.jsp"/>
 
   <div class="slogan container container--90">
     <h2>
