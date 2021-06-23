@@ -182,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function() {
           document.querySelector("div[data-step='3'] p.errorMessage").innerText = "Musisz wybrać fundację";
           return false;
         case 4:
+          result = true;
           const inputs = document.querySelectorAll("div[data-step='4'] input[type='text'], div[data-step='4'] input[type='date'], div[data-step='4'] input[type='time']");
           const errorMsg = document.querySelectorAll("div[data-step='4'] p.errorMessage");
           if (inputs[0].value.replaceAll(" ", "") === "") {
@@ -203,8 +204,8 @@ document.addEventListener("DOMContentLoaded", function() {
           }else {
             errorMsg[2].innerText = "";
           }
-          const dateForm = new Date(inputs[3].value);
-          const dateNow = new Date(Date.now());
+          const dateForm = new Date(inputs[3].value).getTime();
+          const dateNow = new Date(Date.now()).getTime();
           if(!(dateForm > dateNow)) {
             errorMsg[3].innerText = "Nie możesz zamówić kuriera wcześniej, niż na jutro";
             result = false;
@@ -247,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if (this.currentStep === 5) {
         const list = document.querySelectorAll("div.summary ul");
         const summaryDesc = list[0].querySelectorAll("span.summary--text");
-        const bags = parseInt(document.querySelector("div[data-step='2']input").value);
+        const bags = parseInt(document.querySelector("div[data-step='2'] input").value);
         let bag_declination = '';
         let contain_declination = '';
         const bagsNumber = bags - Math.floor(bags /10) * 10;
