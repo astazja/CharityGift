@@ -1,6 +1,7 @@
 package pl.coderslab.charity.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.coderslab.charity.model.CurrentUser;
 import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
@@ -26,10 +28,12 @@ public class HomeController {
     private final UserService userService;
 
     @RequestMapping("/")
-    public String homeAction(Model model){
+    public String homeAction(@AuthenticationPrincipal CurrentUser customUser, Model model){
         model.addAttribute("institutions", institutionService.allInstitutions());
         model.addAttribute("bags", donationService.getQuantityOfBags());
         model.addAttribute("donations", donationService.countDonations());
+        User entityUser = customUser.getUser();
+        model.addAttribute("user", entityUser);
         return "index";
     }
     @GetMapping("/login")
