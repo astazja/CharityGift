@@ -39,4 +39,6 @@ public class Donation {
     @DateTimeFormat(pattern = "HH:mm")
     private LocalTime pickUpTime;
     private String pickUpComment;
+    @ManyToOne
+    private User user;
 }

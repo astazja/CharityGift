@@ -28,12 +28,10 @@ public class HomeController {
     private final UserService userService;
 
     @RequestMapping("/")
-    public String homeAction(@AuthenticationPrincipal CurrentUser customUser, Model model){
+    public String homeAction(Model model){
         model.addAttribute("institutions", institutionService.allInstitutions());
         model.addAttribute("bags", donationService.getQuantityOfBags());
         model.addAttribute("donations", donationService.countDonations());
-        User entityUser = customUser.getUser();
-        model.addAttribute("user", entityUser);
         return "index";
     }
     @GetMapping("/login")
@@ -55,7 +53,7 @@ public class HomeController {
             return "register";
         }
         if(!user.getPassword().equals(repeat)){
-            result.addError(new FieldError("user","password","Podane hasła, nie sa takie same"));
+            result.addError(new FieldError("user","password","Podane hasła, nie są takie same"));
             return "register";
         }
         userService.saveUser(user);

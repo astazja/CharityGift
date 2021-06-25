@@ -37,4 +37,21 @@ public class ImplUserService implements UserService {
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
+
+    @Override
+    public void editUser(User user, String password, String confPass) {
+        User change = userRepository.findById(user.getId()).get();
+        if(!password.isBlank() && password.equals(confPass)) {
+            user.setPassword(passwordEncoder.encode(password));
+        }else {
+            user.setPassword(change.getPassword());
+        }
+        user.setEmail(change.getEmail());
+        userRepository.save(user);
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        return userRepository.getById(id);
+    }
 }

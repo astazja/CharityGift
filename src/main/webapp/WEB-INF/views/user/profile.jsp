@@ -34,8 +34,7 @@
             </div>
             <br>
             <div class="slogan--steps-title">
-                <a href="#" class="btn">Zmień dane</a>
-                <a href="#" class="btn">Zmień hasło</a>
+                <a href="<c:url value="/user/edit"/>" class="btn">Zmień dane</a>
             </div>
         </div>
     </div>
