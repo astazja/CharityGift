@@ -1,6 +1,7 @@
 package pl.coderslab.charity.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,12 @@ public class UserController {
     @GetMapping("/profile")
     public String showProfile(@AuthenticationPrincipal CurrentUser customUser, Model model) {
         User entityUser = customUser.getUser();
+        Boolean isAdmin = customUser.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .anyMatch(a->a.equals("ROLE_ADMIN"));
+        if(isAdmin) {
+            return "redirect:/admin";
+        }
         model.addAttribute("user", entityUser);
         return "user/profile";
     }
@@ -41,10 +48,13 @@ public class UserController {
     @PostMapping("/edit")
     public String updateProfile(@Valid User user, BindingResult result,
                                 @RequestParam String password,
-                                @RequestParam String repeat) {
+                                @RequestParam String repeat,
+                                @AuthenticationPrincipal CurrentUser customUser) {
         if(!result.hasErrors()) {
             userService.editUser(user, password, repeat);
+            customUser.setUser(user);
             return "redirect:/user/profile";
+
         }
         return "user/edit";
     }
