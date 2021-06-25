@@ -18,7 +18,7 @@
             <h2>Panel administracyjny:</h2>
             <br>
             <div class="form-group">
-                <a href="#" class="btn btn--without-border">Zarządzanie Instytucjami</a>
+                <a href="<c:url value="/admin/institution"/>" class="btn btn--without-border">Zarządzanie Instytucjami</a>
                 <a href="#" class="btn btn--without-border">Zarządzanie Administratorami</a>
                 <a href="#" class="btn btn--without-border">Zarządzanie Użytkownikami</a>
             </div>

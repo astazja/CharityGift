@@ -39,9 +39,8 @@
                 </table>
             </div>
             <div class="form-group">
-                <a href="#" class="btn btn--without-border">Dodaj Instytucję</a>
-                <a href="#" class="btn btn--without-border">Zarządzanie Administratorami</a>
-                <a href="#" class="btn btn--without-border">Zarządzanie Użytkownikami</a>
+                <a href="<c:url value="/admin/addInstitution"/>" class="btn btn--without-border">Dodaj Instytucję</a>
+                <a href="<c:url value="/admin"/>" class="btn btn--without-border">Powrót do panelu administracyjnego</a>
             </div>
         </div>
     </div>
