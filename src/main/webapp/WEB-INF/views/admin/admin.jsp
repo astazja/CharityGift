@@ -29,6 +29,6 @@
 
 <c:import url="../footer.jsp"/>
 
-<script src="<c:url value="resources/js/app.js"/>"></script>
+<script src="<c:url value="../resources/js/app.js"/>"></script>
 </body>
 </html>
