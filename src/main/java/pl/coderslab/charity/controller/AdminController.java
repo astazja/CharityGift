@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.model.Institution;
+import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.service.InstitutionService;
 import pl.coderslab.charity.service.UserService;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -61,5 +63,27 @@ public class AdminController {
         institutionService.removeInstitution(id);
         return "redirect:/admin/institutions";
     }
-
+    @GetMapping("/admins")
+    public String showAdmins(Model model) {
+        List<User> admins = userService.findUsersByRole("ROLE_ADMIN");
+        model.addAttribute("admins", admins);
+        return "admin/admins";
+    }
+    @GetMapping("/add")
+    public String addAdmin(Model model) {
+        model.addAttribute("admin", new User());
+        return "admin/add";
+    }
+    @PostMapping("/add")
+    public String saveAdmin(@Valid User user, BindingResult result, Model model) {
+        if(result.hasErrors()) {
+            return "/admin/add";
+        }
+        if(userService.findByUserEmail(user.getEmail()) != null) {
+            model.addAttribute("emailMessage", "Taki email już istnieje");
+            return "/admin/add";
+        }
+        userService.saveAdmin(user);
+        return "redirect:/admin/admins";
+    }
 }

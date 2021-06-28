@@ -10,6 +10,7 @@ import pl.coderslab.charity.service.UserService;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class ImplUserService implements UserService {
@@ -53,5 +54,22 @@ public class ImplUserService implements UserService {
     @Override
     public User getUserById(Long id) {
         return userRepository.getById(id);
+    }
+
+    @Override
+    public List<User> findUsersByRole(String role) {
+        Role roles = roleRepository.findByName(role);
+        List<User> admins = userRepository.findAllByRolesIn(Arrays.asList(roles));
+        admins.forEach(r->r.getRoles().size());
+        return admins;
+    }
+
+    @Override
+    public void saveAdmin(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setEnable(1);
+        Role adminRole = roleRepository.findByName("ROLE_ADMIN");
+        user.setRoles(new HashSet<Role>(Arrays.asList(adminRole)));
+        userRepository.save(user);
     }
 }
