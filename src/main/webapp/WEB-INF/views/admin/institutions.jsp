@@ -31,7 +31,6 @@
                             <td>${inst.name}</td>
                             <td>${inst.description}</td>
                             <td><a href="<c:url value="/admin/institution/edit/${inst.id}"/>">Edycja</a></td>
-                            <td><a href="<c:url value="/admin/institution/detail/${inst.id}"/>">Szczegóły</a></td>
                             <td><a href="<c:url value="/admin/institution/delete/${inst.id}"/>">Usuń</a></td>
                         </tr>
                     </c:forEach>
