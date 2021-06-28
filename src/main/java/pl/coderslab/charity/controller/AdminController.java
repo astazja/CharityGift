@@ -102,4 +102,10 @@ public class AdminController {
         userService.removeUser(id);
         return "redirect:/admin/admins";
     }
+    @GetMapping("/users")
+    public String showUsers(Model model) {
+        List<User> users = userService.findUsersByRole("ROLE_USER");
+        model.addAttribute("users", users);
+        return "admin/users";
+    }
 }

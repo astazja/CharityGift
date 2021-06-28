@@ -20,7 +20,7 @@
             <div class="form-group">
                 <a href="<c:url value="/admin/institutions"/>" class="btn btn--without-border">Zarządzanie Instytucjami</a>
                 <a href="<c:url value="/admin/admins"/>" class="btn btn--without-border">Zarządzanie Administratorami</a>
-                <a href="#" class="btn btn--without-border">Zarządzanie Użytkownikami</a>
+                <a href="<c:url value="/admin/users"/>" class="btn btn--without-border">Zarządzanie Użytkownikami</a>
             </div>
         </div>
     </div>
