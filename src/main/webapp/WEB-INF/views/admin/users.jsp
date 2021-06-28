@@ -33,6 +33,12 @@
                             <td>${user.lastName}</td>
                             <td>${user.email}</td>
                             <td><a href="<c:url value="/admin/editUser/${user.id}"/>">Edycja</a></td>
+                            <c:if test="${user.enable == 1}">
+                                <td><a href="<c:url value="/admin/disableUser/${user.id}"/>">Zablokuj</a></td>
+                            </c:if>
+                            <c:if test="${user.enable == 0}">
+                                <td><a href="<c:url value="/admin/enableUser/${user.id}"/>">Odblokuj</a></td>
+                            </c:if>
                             <td><a href="<c:url value="/admin/deleteUser/${user.id}"/>">Usuń</a></td>
                         </tr>
                     </c:forEach>

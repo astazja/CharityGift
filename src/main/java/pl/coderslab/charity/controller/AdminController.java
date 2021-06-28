@@ -108,4 +108,18 @@ public class AdminController {
         model.addAttribute("users", users);
         return "admin/users";
     }
+    @GetMapping("/editUser/{id}")
+    public String editUser(Model model, @PathVariable Long id) {
+        model.addAttribute("user", userService.getUserById(id));
+        return "admin/editUser";
+    }
+    @PostMapping("/updateUser")
+    public String updateUser(@Valid User user, BindingResult result,
+                              @RequestParam String password) {
+        if(result.hasErrors()) {
+            return "/admin/editUser";
+        }
+        userService.editAdmin(user, password);
+        return "redirect:/admin/users";
+    }
 }
