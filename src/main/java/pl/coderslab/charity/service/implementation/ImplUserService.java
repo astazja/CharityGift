@@ -86,4 +86,9 @@ public class ImplUserService implements UserService {
         user.setRoles(change.getRoles());
         userRepository.save(user);
     }
+
+    @Override
+    public void removeUser(Long id) {
+        userRepository.deleteById(id);
+    }
 }

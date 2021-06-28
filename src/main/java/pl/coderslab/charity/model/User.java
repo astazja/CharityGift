@@ -23,6 +23,6 @@ public class User {
     @Size(min = 6, message = "Za krótkie hasło, minimalna ilość znaków: 6")
     private String password;
     private Integer enable;
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Set<Role> roles;
 }

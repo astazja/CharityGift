@@ -12,4 +12,5 @@ public interface UserService {
     List<User> findUsersByRole(String role);
     void saveAdmin(User user);
     void editAdmin(User user, String password);
+    void removeUser(Long id);
 }

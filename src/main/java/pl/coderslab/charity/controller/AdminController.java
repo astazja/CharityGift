@@ -97,4 +97,9 @@ public class AdminController {
         userService.editAdmin(user, password);
         return "redirect:/admin/admins";
     }
+    @GetMapping("/delete/{id}")
+    public String deleteAdmin(@PathVariable Long id) {
+        userService.removeUser(id);
+        return "redirect:/admin/admins";
+    }
 }
