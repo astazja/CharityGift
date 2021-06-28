@@ -4,10 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.model.Institution;
 import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.service.InstitutionService;
@@ -84,6 +81,20 @@ public class AdminController {
             return "/admin/add";
         }
         userService.saveAdmin(user);
+        return "redirect:/admin/admins";
+    }
+    @GetMapping("/edit/{id}")
+    public String editAdmin(Model model, @PathVariable Long id) {
+        model.addAttribute("admin", userService.getUserById(id));
+        return "admin/edit";
+    }
+    @PostMapping("/updateAdmin")
+    public String updateAdmin(@Valid User user, BindingResult result,
+                              @RequestParam String password) {
+        if(result.hasErrors()) {
+            return "/admin/edit";
+        }
+        userService.editAdmin(user, password);
         return "redirect:/admin/admins";
     }
 }

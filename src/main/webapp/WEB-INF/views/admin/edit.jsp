@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="<c:url value="../resources/css/style.css"/>" />
+    <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>" />
 </head>
 <body>
 <header>
@@ -16,9 +16,9 @@
 <section>
     <div class="login-page">
         <div class="slogan--item">
-            <h2>Tworzenie Administratora:</h2>
+            <h2>Edycja Administratora:</h2>
             <div>
-                <form:form modelAttribute="admin" method="post">
+                <form:form modelAttribute="admin" method="post" action="/admin/updateAdmin">
                     <form:hidden path="id"/>
                     <div class="form-group">
                         <form:input path="firstName" placeholder="Imię administratora"/>
@@ -29,17 +29,11 @@
                         <form:errors path="lastName"/>
                     </div>
                     <div class="form-group">
-                        <form:input type="email" path="email" placeholder="Email"/>
-                        <form:errors path="email"/>
-                        <p><c:out value="${emailMessage}"/></p>
-                    </div>
-                    <div class="form-group">
-                        <form:input type="password" path="password" placeholder="Hasło"/>
-                        <form:errors path="password"/>
+                        <input type="password" name="password" placeholder="Nowe hasło"/>
                     </div>
                     <div class="form-group form-group--buttons">
                         <a href="<c:url value="/admin/admins"/>" class="btn btn--without-border">Anuluj</a>
-                        <button class="btn" type="submit">Dodaj Administratora</button>
+                        <button class="btn" type="submit">Edytuj Administratora</button>
                     </div>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 </form:form>

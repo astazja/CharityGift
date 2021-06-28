@@ -72,4 +72,18 @@ public class ImplUserService implements UserService {
         user.setRoles(new HashSet<Role>(Arrays.asList(adminRole)));
         userRepository.save(user);
     }
+
+    @Override
+    public void editAdmin(User user, String password) {
+        User change = userRepository.findById(user.getId()).get();
+        if(!password.isBlank()) {
+            user.setPassword(passwordEncoder.encode(password));
+        }else {
+            user.setPassword(change.getPassword());
+        }
+        user.setEmail(change.getEmail());
+        user.setEnable(change.getEnable());
+        user.setRoles(change.getRoles());
+        userRepository.save(user);
+    }
 }
