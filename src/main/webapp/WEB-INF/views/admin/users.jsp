@@ -46,7 +46,6 @@
                 </table>
             </div>
             <div class="form-group">
-                <a href="<c:url value="/admin/addUser"/>" class="btn btn--without-border">Dodaj Użytkownika</a>
                 <a href="<c:url value="/admin"/>" class="btn btn--without-border">Powrót do panelu administracyjnego</a>
             </div>
         </div>

@@ -132,4 +132,9 @@ public class AdminController {
         userService.disableUser(userService.getUserById(id));
         return "redirect:/admin/users";
     }
+    @GetMapping("/deleteUser/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userService.removeUser(id);
+        return "redirect:/admin/users";
+    }
 }
