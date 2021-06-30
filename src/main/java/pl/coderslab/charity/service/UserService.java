@@ -13,4 +13,6 @@ public interface UserService {
     void saveAdmin(User user);
     void editAdmin(User user, String password);
     void removeUser(Long id);
+    void enableUser(User user);
+    void disableUser(User user);
 }

@@ -92,4 +92,17 @@ public class ImplUserService implements UserService {
         userRepository.deleteById(id);
     }
 
+    @Override
+    public void enableUser(User user) {
+        user.setEnable(1);
+        userRepository.save(user);
+
+    }
+
+    @Override
+    public void disableUser(User user) {
+        user.setEnable(0);
+        userRepository.save(user);
+    }
+
 }

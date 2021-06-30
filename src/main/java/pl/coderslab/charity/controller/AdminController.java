@@ -122,4 +122,14 @@ public class AdminController {
         userService.editAdmin(user, password);
         return "redirect:/admin/users";
     }
+    @RequestMapping("/enableUser/{id}")
+    public String enableUser(@PathVariable Long id) {
+        userService.enableUser(userService.getUserById(id));
+        return "redirect:/admin/users";
+    }
+    @RequestMapping("/disableUser/{id}")
+    public String disableUser(@PathVariable Long id) {
+        userService.disableUser(userService.getUserById(id));
+        return "redirect:/admin/users";
+    }
 }
