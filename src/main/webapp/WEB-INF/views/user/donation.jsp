@@ -6,23 +6,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="<c:url value="../resources/css/style.css"/>" />
+    <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>" />
 </head>
 <body>
 <header class="header--form-page">
     <c:import url="../header.jsp"/>
     <div class="slogan container container--90">
         <div class="slogan--item">
-            <a href="#" class="btn btn--large">Podaruj rzeczy</a>
             <h2>Twoje zbiórki:</h2>
             <div class="slogan--steps-title">
-                Tabela ze zbiórkami i akcje obok
-            </div>
-            <br>
-            <div class="slogan--steps-title">
-                <a href="#" class="btn">Szczegóły</a>
-                <a href="#" class="btn">Edytuj</a>
-                <a href="#" class="btn">Usuń</a>
+                <table class="donations">
+                    <thead>
+                    <tr>
+                        <th>Data utworzenia</th>
+                        <th>Status</th>
+                        <th>Data przekazania</th>
+                        <th>Organizacja</th>
+                        <th>Ilość przekazanych worków</th>
+                        <th colspan="3">Akcja</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>2021-02-09</td>
+                        <td>Odebrano</td>
+                        <td>2021-02-09</td>
+                        <td>Fundacja: "A kogo"</td>
+                        <td>2 worki 60 litrowe</td>
+                        <td>
+                            <button class="btn">
+                                <a href="#">Szczegóły</a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2021-02-09</td>
+                        <td>Odebrano</td>
+                        <td>2021-02-09</td>
+                        <td>Fundacja: "A kogo"</td>
+                        <td>2 worki 60 litrowe</td>
+                        <td>
+                            <button class="btn">
+                                <a href="#">Szczegóły</a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2021-02-09</td>
+                        <td>Odebrano</td>
+                        <td>2021-02-09</td>
+                        <td>Fundacja: "A kogo"</td>
+                        <td>2 worki 60 litrowe</td>
+                        <td>
+                            <button class="btn">
+                                <a href="#">Szczegóły</a>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2021-02-09</td>
+                        <td>Odebrano</td>
+                        <td>2021-02-09</td>
+                        <td>Fundacja: "A kogo"</td>
+                        <td>2 worki 60 litrowe</td>
+                        <td>
+                            <button class="btn">
+                                <a href="#">Szczegóły</a>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
