@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -41,4 +42,13 @@ public class Donation {
     private String pickUpComment;
     @ManyToOne
     private User user;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime created;
+    @OneToOne(cascade = CascadeType.REMOVE)
+    private Status status;
+
+    @PrePersist
+    private void create() {
+        this.created = LocalDateTime.now();
+    }
 }

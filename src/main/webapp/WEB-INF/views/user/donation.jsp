@@ -27,18 +27,20 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>2021-02-09</td>
-                        <td>Odebrano</td>
-                        <td>2021-02-09</td>
-                        <td>Fundacja: "A kogo"</td>
-                        <td>2 worki 60 litrowe</td>
-                        <td>
-                            <button class="btn">
-                                <a href="#">Szczegóły</a>
-                            </button>
-                        </td>
-                    </tr>
+                    <c:forEach items="${donations}" var="donation">
+                        <tr>
+                            <td>${donation.created}</td>
+                            <td>${donation.status}</td>
+                            <td>${donation.pickUpDate}</td>
+                            <td>Fundacja: "${donation.institution.name}"</td>
+                            <td>${donation.quantity} worki 60 litrowe</td>
+                            <td>
+                                <button class="btn">
+                                    <a href="#">Szczegóły</a>
+                                </button>
+                            </td>
+                        </tr>
+                    </c:forEach>
                     <tr>
                         <td>2021-02-09</td>
                         <td>Odebrano</td>

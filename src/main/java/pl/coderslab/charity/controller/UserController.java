@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.coderslab.charity.model.CurrentUser;
 import pl.coderslab.charity.model.User;
+import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.UserService;
 
 import javax.validation.Valid;
@@ -21,6 +22,7 @@ import javax.validation.Valid;
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
+    private final DonationService donationService;
 
     @GetMapping("/profile")
     public String showProfile(@AuthenticationPrincipal CurrentUser customUser, Model model) {
@@ -36,7 +38,8 @@ public class UserController {
     }
 
     @GetMapping("/donation")
-    public String showDonation(Model model) {
+    public String showDonation(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
+        model.addAttribute("donations", donationService.userDonations(currentUser.getUser()));
         return "user/donation";
     }
 
