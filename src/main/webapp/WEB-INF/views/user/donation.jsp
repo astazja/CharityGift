@@ -29,11 +29,12 @@
                     <tbody>
                     <c:forEach items="${donations}" var="donation">
                         <tr>
-                            <td>${donation.created}</td>
-                            <td>${donation.status}</td>
+                            <td>${donation.date}</td>
+                            <td><c:if test="${donation.status.status==1}">Odebrano</c:if>
+                            <c:if test="${donation.status.status==0}">Nie odebrano</c:if></td>
                             <td>${donation.pickUpDate}</td>
                             <td>Fundacja: "${donation.institution.name}"</td>
-                            <td>${donation.quantity} worki 60 litrowe</td>
+                            <td>${donation.quantity}</td>
                             <td>
                                 <button class="btn">
                                     <a href="#">Szczegóły</a>
@@ -41,42 +42,6 @@
                             </td>
                         </tr>
                     </c:forEach>
-                    <tr>
-                        <td>2021-02-09</td>
-                        <td>Odebrano</td>
-                        <td>2021-02-09</td>
-                        <td>Fundacja: "A kogo"</td>
-                        <td>2 worki 60 litrowe</td>
-                        <td>
-                            <button class="btn">
-                                <a href="#">Szczegóły</a>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2021-02-09</td>
-                        <td>Odebrano</td>
-                        <td>2021-02-09</td>
-                        <td>Fundacja: "A kogo"</td>
-                        <td>2 worki 60 litrowe</td>
-                        <td>
-                            <button class="btn">
-                                <a href="#">Szczegóły</a>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2021-02-09</td>
-                        <td>Odebrano</td>
-                        <td>2021-02-09</td>
-                        <td>Fundacja: "A kogo"</td>
-                        <td>2 worki 60 litrowe</td>
-                        <td>
-                            <button class="btn">
-                                <a href="#">Szczegóły</a>
-                            </button>
-                        </td>
-                    </tr>
                     </tbody>
                 </table>
             </div>

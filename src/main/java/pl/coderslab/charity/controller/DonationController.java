@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.charity.model.CurrentUser;
 import pl.coderslab.charity.model.Donation;
+import pl.coderslab.charity.model.Status;
 import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.service.CategoryService;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
+import pl.coderslab.charity.service.StatusService;
 
 import javax.validation.Valid;
 
@@ -22,6 +24,7 @@ public class DonationController {
     private final CategoryService categoryService;
     private final InstitutionService institutionService;
     private final DonationService donationService;
+    private final StatusService statusService;
 
     @GetMapping("/add")
     public String addDonation(@AuthenticationPrincipal CurrentUser customUser, Model model) {
@@ -33,7 +36,7 @@ public class DonationController {
         return "form";
     }
     @PostMapping("/add")
-    public String saveDonation(@Valid Donation donation, BindingResult result, Model model) {
+    public String saveDonation(@Valid Donation donation, BindingResult result, Model model, @AuthenticationPrincipal CurrentUser currentUser) {
         if(result.hasErrors()){
             StringBuilder stringBuilder = new StringBuilder();
             result.getFieldErrors().forEach(error -> {
@@ -42,6 +45,11 @@ public class DonationController {
             model.addAttribute("errorMessage", "Nie udało się zapisać formularza.<br>Formularz zawierał poniższe błędy:<br>" + stringBuilder.toString());
             return "form";
         }
+        donation.setUser(currentUser.getUser());
+        Status status = new Status();
+        status.setStatus(0);
+        donation.setStatus(status);
+        statusService.saveStatus(status);
         donationService.addDonation(donation);
         return "form-confirmation";
     }
