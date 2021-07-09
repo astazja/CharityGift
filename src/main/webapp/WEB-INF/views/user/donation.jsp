@@ -32,7 +32,10 @@
                             <td>${donation.date}</td>
                             <td><c:if test="${donation.status.status==1}">Odebrano</c:if>
                             <c:if test="${donation.status.status==0}">Nie odebrano</c:if></td>
-                            <td>${donation.pickUpDate}</td>
+                            <td>
+                                <c:if test="${donation.status.status==1}">${donation.status.date} ${donation.status.time}</c:if>
+                                <c:if test="${donation.status.status==0}">${donation.pickUpDate} ${donation.pickUpTime}</c:if>
+                            </td>
                             <td>Fundacja: "${donation.institution.name}"</td>
                             <td>${donation.quantity}</td>
                             <td>

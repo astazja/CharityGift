@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Data
@@ -32,5 +33,13 @@ public class Status implements Comparable<Status>{
         }else {
             return this.status.compareTo(o.status);
         }
+    }
+    public String getDate() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return this.updated.format(formatter);
+    }
+    public String getTime() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        return this.updated.format(formatter);
     }
 }

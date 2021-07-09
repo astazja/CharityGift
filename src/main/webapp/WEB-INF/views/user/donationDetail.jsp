@@ -38,8 +38,14 @@
                                 <c:if test="${donation.status.status==0}">Nie odebrano</c:if>
                             </td>
                             <td>${donation.date}</td>
-                            <td>${donation.pickUpDate}</td>
-                            <td>${donation.pickUpTime}</td>
+                            <td>
+                                <c:if test="${donation.status.status==1}">${donation.status.date}</c:if>
+                                <c:if test="${donation.status.status==0}">${donation.pickUpDate}</c:if>
+                            </td>
+                            <td>
+                                <c:if test="${donation.status.status==1}">${donation.status.time}</c:if>
+                                <c:if test="${donation.status.status==0}">${donation.pickUpTime}</c:if>
+                            </td>
                             <td>Fundacja: "${donation.institution.name}"</td>
                             <td>
                                 <c:forEach items="${donation.categories}" var="category">
