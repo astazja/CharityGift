@@ -20,6 +20,5 @@ take them from you.
 ## To do:
 - Layout screenshot to readme
 - Try it -> Link to application
-- User management
-- Validation
+- sending email
 

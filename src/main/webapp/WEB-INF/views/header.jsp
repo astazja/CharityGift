@@ -10,7 +10,7 @@
     </sec:authorize>
     <sec:authorize access="isAuthenticated()">
       <li class="logged-user">
-<%--        Witaj <sec:authentication property="user"/>--%>
+        Witaj <sec:authentication property="principal.username"/>
         <ul class="dropdown">
           <li><a href="<c:url value="/user/profile"/>">Profil</a></li>
           <li><a href="<c:url value="/user/donation"/>">Moje zbiórki</a></li>
