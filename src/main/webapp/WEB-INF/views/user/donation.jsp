@@ -37,7 +37,7 @@
                             <td>${donation.quantity}</td>
                             <td>
                                 <button class="btn">
-                                    <a href="#">Szczegóły</a>
+                                    <a href="<c:url value="/user/donation/details/${donation.id}"/>">Szczegóły</a>
                                 </button>
                             </td>
                         </tr>

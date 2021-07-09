@@ -10,4 +10,5 @@ public interface DonationService {
     Long countDonations();
     void addDonation(Donation donation);
     List<Donation> userDonations(User user);
+    Donation getDonation(Long id);
 }

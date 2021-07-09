@@ -38,4 +38,9 @@ public class ImplDonationService implements DonationService {
     public List<Donation> userDonations(User user) {
         return donationRepository.findAllByUser(user);
     }
+
+    @Override
+    public Donation getDonation(Long id) {
+        return donationRepository.findById(id).get();
+    }
 }
