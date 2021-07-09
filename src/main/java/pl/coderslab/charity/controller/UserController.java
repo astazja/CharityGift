@@ -10,12 +10,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.w3c.dom.stylesheets.LinkStyle;
 import pl.coderslab.charity.model.CurrentUser;
+import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.UserService;
 
 import javax.validation.Valid;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -39,7 +44,11 @@ public class UserController {
 
     @GetMapping("/donation")
     public String showDonation(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
-        model.addAttribute("donations", donationService.userDonations(currentUser.getUser()));
+        List<Donation> donationList = donationService.userDonations(currentUser.getUser());
+        donationList.sort(Comparator.comparing(Donation::getStatus).reversed()
+                .thenComparing(Donation::getPickUpDate)
+                .thenComparing(Donation::getCreated));
+        model.addAttribute("donations", donationList);
         return "user/donation";
     }
 
