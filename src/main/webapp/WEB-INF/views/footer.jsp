@@ -5,14 +5,16 @@
   <div class="contact" id="contact">
     <h2>Skontaktuj się z nami</h2>
     <h3>Formularz kontaktowy</h3>
-    <form class="form--contact">
+    <form class="form--contact" method="post" action="/emailContact">
       <div class="form-group form-group--50"><input type="text" name="name" placeholder="Imię"/></div>
       <div class="form-group form-group--50"><input type="text" name="surname" placeholder="Nazwisko"/></div>
 
       <div class="form-group"><textarea name="message" placeholder="Wiadomość" rows="1"></textarea></div>
-
+      <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
       <button class="btn" type="submit">Wyślij</button>
+
     </form>
+    <div><h3>${message}</h3></div>
   </div>
   <div class="bottom-line">
     <span class="bottom-line--copy">Copyright &copy; 2021</span>

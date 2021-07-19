@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.w3c.dom.stylesheets.LinkStyle;
 import pl.coderslab.charity.model.CurrentUser;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.User;
@@ -16,7 +15,6 @@ import pl.coderslab.charity.service.StatusService;
 import pl.coderslab.charity.service.UserService;
 
 import javax.validation.Valid;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
