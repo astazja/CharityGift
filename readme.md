@@ -15,10 +15,23 @@ take them from you.
 - CSS3
 
 ## Layout:
+### Start:
+![index](./img/index.png)
+### Accounts:
+![login](./img/login.png)
+![registration](./img/registration.png)
+### User:
+![user](./img/user.png)
+![myDonations](./img/myDonations.png)
+![donationDetail](./img/donationDetail.png)
+### Donation:
+![donation](./img/donation.png)
+### Admin Panel:
+![admin](./img/admin.png)
 ## Try it:
 
 ## To do:
-- Layout screenshot to readme
+
 - Try it -> Link to application
-- sending email
+
 
