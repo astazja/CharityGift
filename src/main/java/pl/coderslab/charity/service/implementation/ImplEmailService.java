@@ -10,9 +10,8 @@ import pl.coderslab.charity.service.EmailService;
 @Component
 public class ImplEmailService implements EmailService {
 
-    @Autowired
     private JavaMailSender emailSender;
-
+    @Autowired
     public ImplEmailService(JavaMailSender emailSender) {
         this.emailSender = emailSender;
     }
@@ -22,7 +21,6 @@ public class ImplEmailService implements EmailService {
         message.setTo("to@gmail.com");
         message.setSubject("Wiadomość od " + name + surname + "ze strony CharityDonation");
         message.setText(text);
-        System.out.println("Message send");
         emailSender.send(message);
     }
 }

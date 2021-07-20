@@ -16,7 +16,7 @@
 <section>
     <div class="login-page">
         <div class="slogan--item">
-            <h2>Tworzenie Instytucji:</h2>
+            <h2>Edycja Instytucji:</h2>
             <div>
                 <form:form modelAttribute="institution" method="post" action="/admin/update">
                     <form:hidden path="id"/>
